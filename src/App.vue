@@ -1,5 +1,5 @@
 <template>
-  <div id = "app" :class="typeof weather.main != 'undefined' && 
+  <div id = "appweather" :class="typeof weather.main != 'undefined' && 
   (weather.weather[0].main === 'Rain' ? (weather.main.temp > 12 ? 'rainy' : 'rainy-cold'): 
   (weather.weather[0].main === 'Clouds' ? weather.main.temp > 12 ? 'cloudy' : 'cloudy-cold' : 
   (weather.weather[0].main === 'Clear' ? weather.main.temp > 12 ? 'cleary' : 'cleary-cold' : '')) ) ">
@@ -8,7 +8,7 @@
         <input 
         type="text" 
         class="search-bar" 
-        placeholder="Search..."
+        placeholder="Search a country..."
         v-model = "query"
         @keypress="fetchWeather"
         >
@@ -79,53 +79,56 @@ body{
   font-family: 'montserrat', sans-serif;
 }
 
-#app{
-  background-color: #858585;
+#appweather{
+  background-image: url('./assets/bg.jpg');
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;
 }
 
 
-#app.rainy {
+#appweather.rainy {
   background-image: url('./assets/rainy-bg.jpg');
 }
 
-#app.rainy-cold {
+#appweather.rainy-cold {
   background-image: url('./assets/rainy-cold-bg.jpg');
 }
 
-#app.cloudy {
+#appweather.cloudy {
   background-image: url('./assets/cloudy-bg.jpg');
 }
 
-#app.cloudy-cold {
+#appweather.cloudy-cold {
   background-image: url('./assets/cloudy-cold-bg.jpg');
 }
 
-#app.cleary {
+#appweather.cleary {
   background-image: url('./assets/clear-bg.jpg');
 }
 
-#app.cleary-cold {
+#appweather.cleary-cold {
   background-image: url('./assets/clear-cold-bg.jpg');
 }
 
 main{
   min-height: 100vh;
   padding: 25px;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
 }
 
 .search-box{
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
+}
+
+.search-box input{
+ padding: 20px;
 }
 
 .search-box, .search-bar{
   display: block;
   width: 100%;
-  padding: 15px;
+  height: 50px;
   color: #313131;
   font-size: 20px;
   appearance: none;
@@ -139,14 +142,23 @@ main{
   transition: 0.4s;
 }
 
+
+
 .search-box, .search-bar:focus{
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+ /* box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   background-color: rgba(255,255,255, 0.75);
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 16px 0px 16px 0px;*/
 }
+
+
+.weather-wrap{
+  
+}
+
 
 .location-box .location{
   color: #FFF;
+  background-color: black;
   font-size: 32px;
   font-weight: 500;
   text-align: center;
@@ -155,6 +167,7 @@ main{
 
 .location-box .date{
   color: #FFF;
+  background-color: black;
   font-size: 32px;
   font-weight: 300;
   font-style: italic;
@@ -172,7 +185,7 @@ main{
   font-size: 102px;
   font-weight: 900;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255,255,255, 0.25);
+  background-color: rgba(97, 96, 96, 0.652);
   border-radius: 16px;
   margin: 30px 0px;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
@@ -180,9 +193,25 @@ main{
 
 .weather-box .weather{
   color: #fff;
+  background-color: black;
   font-size: 48px;
   font-weight: 700;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
+
+@media only screen and (min-width: 1024px) {
+
+  #app{
+    background-color: black;
+  }
+
+  #appweather{
+   
+    margin: 0 auto;
+    width: 30%;
+  }
+ 
+}
+
 </style>
